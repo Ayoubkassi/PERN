@@ -99,14 +99,33 @@ router.post('/',async (req,res)=>{
 // @desc update a restaurant
 // access public
 
-router.put('/:id',(req,res) =>{
+router.put('/:id', async(req,res) =>{
     const id = req.params.id;
     const { name , location , price } = req.body;
 
-    res.status(200).json({
-      status : "success",
-      message : "restaurant updated successfully"
-    });
+    const query = {
+      text : 'UPDATE restaurants SET name=$1 , location=$2 , price_range = $3 WHERE id=$4',
+      values : [name ,location , price,id]
+    };
+
+    try{
+      const { rows } = await db.query(query);
+      if(rows){
+        res.status(200).json({
+          status : "success",
+          message : "restaurant updated successfully"
+        });
+      }
+
+    }catch(err){
+      console.log(err);
+      res.status(404).json({
+        status : "failed",
+        message : err
+      });
+    }
+
+
 
 });
 
