@@ -2,6 +2,8 @@
 
 ## Stack : PostgreSQL  , ExpressJS , React , NodeJs
 
+![Pern stack](https://repository-images.githubusercontent.com/248812720/56902700-c5bd-11ea-813f-ed8631377258)
+
 **Postgres Useful Command**
 
   * Enter to Postgres CLI
@@ -39,7 +41,9 @@ CREATE TABLE restaurants (
   price_range INT NOT NULL check(price_range>= 1 and price_range <= 50)
 );
 
-INSERT INTO restaurants(name , location , price_range) VALUES ('KFC','Rabat',59);
+INSERT INTO restaurants(name , location , price_range) VALUES ('KFC','Rabat',49);
+
+INSERT INTO restaurants(name , location , price_range) VALUES ('Mini House','Kenitra',29);
 
 SELECT * FROM restaurants;
 
