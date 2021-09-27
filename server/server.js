@@ -2,10 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //morgan is just like body-parser just a Middleware
+//const { Client } = require('pg');
 
 const restaurants = require('./routes/api/restaurants');
 
+//Setup our database config
 
+// const client = new Client()
+// await client.connect()
+
+//create our http server
 const app = express();
 
 //bodyParser Middleware

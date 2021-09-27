@@ -39,7 +39,7 @@ CREATE TABLE restaurants (
   price_range INT NOT NULL check(price_range>= 1 and price_range <= 50)
 );
 
-INSERT INTO restaurants(name , location , price_range) VALUES ('Mini House','Kenitra',29);
+INSERT INTO restaurants(name , location , price_range) VALUES ('KFC','Rabat',59);
 
 SELECT * FROM restaurants;
 

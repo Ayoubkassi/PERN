@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../../db');
 
 
 
@@ -8,11 +9,12 @@ const router = express.Router();
 // access public
 
 
-router.get('/',(req,res)=>{
+router.get('/',async (req,res)=>{
+  const { rows } = await db.query('SELECT * FROM restaurants');
   res.status(200).json({
     status : "success",
     data : {
-      restaurants : ["Mini House", "KFC"],
+      restaurants : rows
     },
   });
 });
@@ -42,6 +44,11 @@ router.post('/',(req,res)=>{
     location : location,
     price : price
   });
+
+  res.status(200).json({
+    status : "success",
+    message : "restaurant created successfully"
+  });
 });
 
 
@@ -53,6 +60,11 @@ router.put('/:id',(req,res) =>{
     const id = req.params.id;
     const { name , location , price } = req.body;
 
+    res.status(200).json({
+      status : "success",
+      message : "restaurant updated successfully"
+    });
+
 });
 
 
@@ -63,6 +75,10 @@ router.put('/:id',(req,res) =>{
 router.delete('/:id',(req,res) =>{
     const id = req.params.id;
 
+    res.status(204).json({
+      status : "success",
+      message : "restaurant deleted successfully"
+    });
 });
 
 
