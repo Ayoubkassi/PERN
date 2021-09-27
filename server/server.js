@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors')
 //morgan is just like body-parser just a Middleware
 //const { Client } = require('pg');
 
@@ -15,7 +16,7 @@ const restaurants = require('./routes/api/restaurants');
 const app = express();
 
 //bodyParser Middleware
-
+app.use(cors());
 app.use(bodyParser.json());
 
 const PORT =  process.env.PORT || 5000 ;
