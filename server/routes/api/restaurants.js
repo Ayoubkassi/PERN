@@ -10,13 +10,23 @@ const db = require('../../db');
 
 
 router.get('/',async (req,res)=>{
-  const { rows } = await db.query('SELECT * FROM restaurants');
-  res.status(200).json({
-    status : "success",
-    data : {
-      restaurants : rows
-    },
-  });
+  try{
+    const { rows } = await db.query('SELECT * FROM restaurants');
+    res.status(200).json({
+      status : "success",
+      data : {
+        restaurants : rows
+      },
+    });
+
+  }catch(err){
+    console.Log(err);
+    res.status(404).json({
+      status : "failed",
+      message : err 
+    })
+  }
+
 });
 
 // @route GET /api/v1/restaurants/id
