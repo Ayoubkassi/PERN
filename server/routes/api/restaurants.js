@@ -20,11 +20,11 @@ router.get('/',async (req,res)=>{
     });
 
   }catch(err){
-    console.Log(err);
+    console.log(err);
     res.status(404).json({
       status : "failed",
-      message : err 
-    })
+      message : err
+    });
   }
 
 });
@@ -33,13 +33,29 @@ router.get('/',async (req,res)=>{
 // @desc Get Single Restaurant
 // access public
 
-router.get('/:id',(req,res)=>{
-  res.status(200).json({
-    status : "success",
-    data : {
-      restaurant_id : req.params.id,
-    },
-  });
+router.get('/:id',async (req,res)=>{
+  const id = req.params.id;
+  const query = {
+    text : 'SELECT * FROM restaurants WHERE id=$1',
+    values : [id]
+  }
+
+  try{
+      const { rows } = await db.query(query);
+      res.status(200).json({
+        status : "success",
+        data : {
+          restaurant_id : rows,
+        },
+      });
+  } catch(err){
+    console.log(err);
+    res.status(404).json({
+      status : "failed",
+      message : err
+    });
+  }
+
 });
 
 // @route POST /api/v1/restaurants
