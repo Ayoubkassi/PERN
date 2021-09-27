@@ -134,13 +134,30 @@ router.put('/:id', async(req,res) =>{
 // @desc delete a restaurant
 // access public
 
-router.delete('/:id',(req,res) =>{
+router.delete('/:id', async(req,res) =>{
     const id = req.params.id;
 
-    res.status(204).json({
-      status : "success",
-      message : "restaurant deleted successfully"
-    });
+    const query = {
+      text : 'DELETE FROM restaurants WHERE id=$1',
+      values : [id]
+    };
+    try{
+      const { rows } = await db.query(query);
+      if(rows){
+        res.status(204).json({
+          status : "success",
+          message : "restaurant deleted successfully"
+        });
+      }
+    }catch{
+      console.log(err);
+      res.status(404).json({
+        status : "failed",
+        message : err
+      });
+    }
+
+
 });
 
 
