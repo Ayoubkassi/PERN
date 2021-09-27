@@ -1,8 +1,9 @@
+import React from 'react';
 import { Button } from './App.styles.js';
 import { HomePage } from './pages/homepage/HomePage';
-import { RestaurantDetailPage } from './pages/RestaurantDetailPage/Restaurants';
-import { UpdateRestaurantPage } from './pages/UpdateRestaurantPage/UpdateRestaurantPage';
-import { BrowserRouter as Router , Switch , Route } from 'react-router-dom';
+import { RestaurantDetailPage } from './pages/restaurantDetailPage/RestaurantDetailPage';
+import { UpdateRestaurantPage } from './pages/updateRestaurantPage/UpdateRestaurantPage';
+import { BrowserRouter as Router , Switch , Route } from "react-router-dom";
 
 
 function App() {
