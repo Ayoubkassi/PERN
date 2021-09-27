@@ -34,7 +34,7 @@ export const RestaurantList = () => {
             <tr>
               <td>{restaurant.name}</td>
               <td>{restaurant.location}</td>
-              <td>{restaurant.price}</td>
+              <td>{restaurant.price_range}$</td>
               <td>5</td>
               <td><button className="btn btn-success">Update</button></td>
               <td><button className="btn btn-danger">Delete</button></td>
