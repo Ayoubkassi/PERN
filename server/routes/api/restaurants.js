@@ -66,19 +66,32 @@ router.get('/:id',async (req,res)=>{
 // @desc CREATE new restaurant
 // access public
 
-router.post('/',(req,res)=>{
+router.post('/',async (req,res)=>{
   const { name , location , price } = req.body;
 
-  const newRestaurant = new Restaurant({
-    name : name,
-    location : location,
-    price : price
-  });
+  const query = {
+    text : 'INSERT INTO restaurants(name , location , price_range) VALUES ($1,$2,$3)',
+    values : [name , location , price]
+  };
 
-  res.status(200).json({
-    status : "success",
-    message : "restaurant created successfully"
-  });
+  try{
+    const { rows } = await db.query(query);
+    if(rows){
+      res.status(200).json({
+        status : "success",
+        message : "restaurant created successfully"
+      });
+    }
+
+  } catch(err){
+    console.log(err);
+    res.status(404).json({
+      status : "failed",
+      message : err
+    });
+  }
+
+
 });
 
 
