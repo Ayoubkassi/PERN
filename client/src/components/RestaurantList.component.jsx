@@ -15,7 +15,7 @@ export const RestaurantList = () => {
   }
   useEffect(()=>{
     getRestaurants();
-  },[])
+  },[data])
   return(
     <table className="table table-dark" style={{border : 'none'}}>
       <thead style={{backgroundColor : '#007bff' , border : 'none' , outline : 'none'}}>
