@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "proxy":"https://localhost:5000/api/v1/restaurants",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
