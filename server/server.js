@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+//morgan is just like body-parser just a Middleware
 
 const restaurants = require('./routes/api/restaurants');
 
