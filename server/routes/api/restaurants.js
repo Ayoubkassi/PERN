@@ -41,13 +41,17 @@ router.get('/:id',async (req,res)=>{
   }
 
   try{
+
       const { rows } = await db.query(query);
+      if(rows){
       res.status(200).json({
         status : "success",
         data : {
-          restaurant_id : rows,
+          restaurant : rows,
         },
       });
+    }
+
   } catch(err){
     console.log(err);
     res.status(404).json({
