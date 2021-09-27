@@ -1,13 +1,22 @@
-const express = require('express')
-require('dotenv').config()
-const app = express()
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const PORT = 5000 ||  process.env.PORT ;
+const restaurants = require('./routes/api/restaurants');
 
 
-app.get('/restaurants',(req,res) => {
-  res.send("This is awesome")
-})
+const app = express();
+
+//bodyParser Middleware
+
+app.use(bodyParser.json());
+
+const PORT =  process.env.PORT || 5000 ;
+
+//User Routes
+
+app.use('/api/v1/restaurants' , restaurants);
+
+
 
 app.listen(PORT , () => {
   console.log(`server is listening on port : ${PORT}`);
