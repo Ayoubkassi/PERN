@@ -1,21 +1,10 @@
-import React , { useState , useEffect } from 'react';
-import axios from 'axios';
+import React , { useContext } from 'react';
+import { RestaurantContext } from '../Context';
 
 export const RestaurantList = () => {
 
-  const [data , setData] = useState([]);
+const data = useContext(RestaurantContext);
 
-  const getRestaurants = async () => {
-      try{
-        const res = await axios.get('/api/v1/restaurants');
-        setData(res.data.data.restaurants);
-      }catch(err){
-        console.log(err)
-      }
-  }
-  useEffect(()=>{
-    getRestaurants();
-  },[data])
   return(
     <table className="table table-dark" style={{border : 'none'}}>
       <thead style={{backgroundColor : '#007bff' , border : 'none' , outline : 'none'}}>
