@@ -30,7 +30,7 @@ function App() {
             <RestaurantContext.Provider value={data}>
               <Route exact path="/" component={ HomePage } />
               <Route path="/restaurants/:id/update" component={ UpdateRestaurantPage } />
-              <Route path="/restaurants/:id" component={ RestaurantDetailPage } />
+              <Route path="/restaurants/:id" exact component={ RestaurantDetailPage } />
             </RestaurantContext.Provider>
           </Switch>
         </Router>
