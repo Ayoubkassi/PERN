@@ -1,10 +1,13 @@
 import React , { useContext } from 'react';
 import { RestaurantContext } from '../Context';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
 
 export const RestaurantList = () => {
 
 const data = useContext(RestaurantContext);
+let history = useHistory();
 
   const deleteRestaurant = async (e) => {
     const id = e.target.value;
@@ -16,6 +19,11 @@ const data = useContext(RestaurantContext);
     }catch(err){
       console.log(err)
     }
+  }
+  const goToUpdate = (e) => {
+    const id = e.target.value;
+    history.push(`/restaurants/${id}/update`);
+
   }
 
   return(
@@ -38,7 +46,7 @@ const data = useContext(RestaurantContext);
               <td>{restaurant.location}</td>
               <td>{restaurant.price_range}$</td>
               <td>5</td>
-              <td><button className="btn btn-success">Update</button></td>
+              <td><button value={restaurant.id} className="btn btn-success" onClick={goToUpdate}>Update</button></td>
               <td><button value={restaurant.id} className="btn btn-danger" onClick={deleteRestaurant}>Delete</button></td>
 
             </tr>
