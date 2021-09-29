@@ -1,7 +1,7 @@
 import React , { useContext } from 'react';
 import { RestaurantContext } from '../Context';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory , Link } from 'react-router-dom';
 
 
 export const RestaurantList = () => {
@@ -42,7 +42,7 @@ let history = useHistory();
         {
           data && data.map(restaurant => (
             <tr>
-              <td>{restaurant.name}</td>
+              <td><Link to={{pathname: `/restaurants/${restaurant.id}` }} style={{color : 'white'}}>{restaurant.name}</Link></td>
               <td>{restaurant.location}</td>
               <td>{restaurant.price_range}$</td>
               <td>5</td>
