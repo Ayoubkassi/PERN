@@ -1,7 +1,7 @@
 # PERN
 
 ## Stack : PostgreSQL  , ExpressJS , React , NodeJs
-![My App]('./scr.png')
+![My App](./scr.png)
 
 ![Pern stack](https://repository-images.githubusercontent.com/248812720/56902700-c5bd-11ea-813f-ed8631377258)
 
