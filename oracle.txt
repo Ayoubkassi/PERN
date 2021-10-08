@@ -1,0 +1,120 @@
+
+
+*Notions de composant logique et physique :
+
+	-physique : se sont des unités réel existe dans le disque (ex : des fichiers)
+	-logique : c'est une notion pour organisé les unités physique (ex : dossier)
+	
+*Oracle Client et Oracle Serveur :
+
+	-alors on a un user , et un serveur de base de donnée , entre eux existe , une interface , une interface permet à un user de gérer 	et de manipuler les données qui sont sur le serveur .
+
+	-Orcale Server se compose de : Mémoire(Ram) , Disque , la base de donnée
+	
+	-le package de connexion qui permet de l'effectuer , alors notre package /paquet conteint :
+		1-Adresse IP (ou nom de machine)
+		2-Port (par défaut 1512)
+		3-Le nom de la base de donné (SID)
+		4-Authentification info , (login / password)
+		5-Requete (query)
+		
+*Moyennes de transport entre le client et serveur Oracle :
+	-Processus client : Créer par oracle .
+	-ODBC : installer par défault sur Windows (il se base aussi sur processus client)
+	-JDBC : driver de Java
+	
+
+*Processus Client Etapes: 
+	1-Oracle client d'éclanche processus client
+	2-c'est un moyenne de transport
+	3-il recherche sur la machine puis le port ...
+	
+	apres on a:
+	
+	*Listener :
+		-Le listener reçoit la requete depuis le processus client
+		-les taches de Listner:
+			-il ouvert le port
+			-il ecoute
+			-Verifier l'existence de la BD (SID)
+			
+		-C'est lui aussi qui assure tous les connections à distance
+		
+
+	-alors processus client : il cree un Tunnel de comuunication lors de la premiére connexion 
+	-Note : Le tunnel creer par le processus client
+	-Donc , le processus client travail une seul fois , dans la premiere connexion
+	
+	
+
+*les zonnes de memoire :
+
+	-Vue detailler , architecture Oracle :
+		-Processus 
+		-Program
+		-Disque
+		-Memoire : diviser en 2 : SGA et PGA (System Global Area and Program Global Area)
+		
+
+*SGA :
+
+	-Le SGA sert comme la partie de la mémoire ou toutes les operations de la base donné ont se produire
+	-C'est un espace memoire partage par tous les processus de l'instance
+	-Par exemple si plusieur utilisateur se connectent en meme temps , ils partagent tous le SGA .
+	-c'EST un espace memoire dans laquelle oracle execute ses traitement
+	-Elle est alloue au demarrage de l'instance et libérée lors de son arret
+	-elle inclut 6 zones memoires principale
+	-Exemple des operation :
+		-Verifie le syntaxe
+		-executer une requete
+		
+	
+*PGA :
+
+	-Cette memoire est associe à un processus (et inversement)
+	-CE PGA sert ç temporiser les donnes que manipule le processus , toujours dans un souci d'optimisation
+	-Celle-ci n'est pas partagé , elle est seulement utilisé par des processus serveur ou d'arriere plan
+	-Elle est alloue lors du demarrage du processus , et liberere lors de l'arret de processus
+	
+*Processus arriere plan : 
+	-par exemple : assurer le fonctionnement du SGBD Oracle (gestion de memoire , ecriture des fichier)
+	-Exemple : LGWR , CRU , LGWR ...
+	
+
+*Programme Oracle :
+	-SQL PLUS : se connecter a une base de donne 
+	-DBCA : Database Creation Assistant
+	
+
+*TYpe de donnes :
+	-Meta data : Donnee de dictionnaire (Description de Viewe ,index , Table , User ... )
+	-Data User : Donnee d'utilisateur
+	
+	-Meta Data : Ce sont des donnes pour la structure de base de donnés(table , view ) , ou information de users priviléges
+	-Elles contiennet toutes les infos de toutes les composantes logique et physique de la base de donné
+	
+	-User Data : Se sont des donné qui sont stocker dans une table creer par un user
+	
+	
+	
+*Composant Memoire SGA 1-Shared Pool:
+
+	-C'est une zone memoire inside SGA
+	-Shared Pool ou bien Zone partage
+	-Shared pool est la partir SGA qui est utilisé par tous les utilisateur
+	-il contient les requetes SQL les plus recement execute et l'information du dictionnaire la plus recemment utilisé
+	-Elle est utilise pour partager les informations sur les objets de la base de donnés ainsi que sur les droits et priviléges accord aux users
+	
+	-Shared pool kan9dro ndiro bih session
+	
+	-Elle est compose de 2 structures , le library cache et le dictionary cache
+	-Cette zone memoire se decoupe en 2 blocs:
+		-Le library cache 
+		-Le Dictionnary Cache
+		
+		
+
+		 
+	
+
+ 
